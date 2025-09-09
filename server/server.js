@@ -11,6 +11,11 @@ const port = process.env.PORT || 5000;
 app.use(cors()); // allow all origins
 app.use(express.json());
 
+// Root endpoint to check server status
+app.get("/", (req, res) => {
+  res.send("🚀 Server is live! Ready to generate images.");
+});
+
 app.post("/generate", async (req, res) => {
   try {
     const { prompt } = req.body;
